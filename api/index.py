@@ -45,6 +45,6 @@ def sensor():
         connection.close()
         return f"Current Time: {result}"
     
-    except Exception as e:
-        return f"Failed to connect: {e}"
+except Exception as e:
+    return f"Failed to connect: {e}"
 
