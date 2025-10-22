@@ -3,7 +3,6 @@ import psycopg2
 from dotenv import load_dotenv
 import os
 
-
 # Load environment variables from .env
 load_dotenv()
 
@@ -26,29 +25,26 @@ def about():
 
 @app.route('/sensor')
 def sensor():
-    # Connect to the database
     try:
         connection = psycopg2.connect(
             user=USER,
             password=PASSWORD,
             host=HOST,
             port=PORT,
-            dbname=DBNAME
+            dbname=DBNAME,
+            sslmode='require',
+            options='-c client_encoding=UTF8'
         )
         print("Connection successful!")
         
-        # Create a cursor to execute SQL queries
         cursor = connection.cursor()
-        
-        # Example query
         cursor.execute("SELECT NOW();")
         result = cursor.fetchone()
-        print("Current Time:", result)
-    
-        # Close the cursor and connection
+        
         cursor.close()
         connection.close()
         return f"Current Time: {result}"
     
     except Exception as e:
         return f"Failed to connect: {e}"
+
