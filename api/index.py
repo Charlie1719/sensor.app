@@ -12,4 +12,4 @@ def about():
 
 @app.route('/sensor')
 def sensor():
-    return 'Proriro esta bien pendejo men'
+    return 'Proriro esta bien pendejo men pendejo men que pendejo men'
