@@ -11,5 +11,5 @@ def about():
     return 'About'
 
 @app.route('/sensor')
-def about():
-    return 'Proriro esta bien pendejo men que pendejo men pendejo men que pendejo men pendejo men que pendejo men pendejo men que pendejo men pendejo men que pendejo men pendejo men que pendejo men'
+def sensor():
+    return 'Proriro esta bien pendejo men'
