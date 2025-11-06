@@ -36,7 +36,7 @@ def sensor():
         print("Connection successful!")
         
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM Sensores;")
+        cursor.execute('SELECT * FROM "Sensores";')
         result = cursor.fetchall()
         
         cursor.close()
