@@ -36,7 +36,7 @@ def sensor():
         print("Connection successful!")
         
         cursor = connection.cursor()
-        cursor.execute("SELECT NOW();")
+        cursor.execute("SELECT@ FROM(Sensores);")
         result = cursor.fetchone()
         
         cursor.close()
