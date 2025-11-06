@@ -7,13 +7,19 @@ import os
 load_dotenv()
 
 # Fetch variables
-USER = os.getenv("user")
-PASSWORD = os.getenv("password")
-HOST = os.getenv("host")
-PORT = os.getenv("port")
-DBNAME = os.getenv("dbname")
+#USER = os.getenv("user")
+#PASSWORD = os.getenv("password")
+#HOST = os.getenv("host")
+#PORT = os.getenv("port")
+#DBNAME = os.getenv("dbname")
+
+# Fetch variables
+CONNECTION_STRING = os.getenv("CONN_STRING")
 
 app = Flask(__name__)
+
+def get_connection():
+    return psycopg2.connect(CONNECTION_STRING)
 
 @app.route('/')
 def home():
@@ -26,15 +32,7 @@ def about():
 @app.route('/sensor')
 def sensor():
     try:
-        connection = psycopg2.connect(
-            user=USER,
-            password=PASSWORD,
-            host=HOST,
-            port=PORT,
-            dbname=DBNAME,
-            sslmode='require',
-            options='-c client_encoding=UTF8'
-        )
+        connection = get_connection()
         print("Connection successful!")
         
         cursor = connection.cursor()
