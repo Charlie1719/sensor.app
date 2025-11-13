@@ -45,17 +45,25 @@
       50% { transform: translateY(-10px); }
     }
 
+    /* GIFS */
     .gif-container {
       margin-top: 20px;
       display: flex;
       justify-content: center;
+      gap: 20px;
       width: 100%;
+      flex-wrap: wrap;
     }
 
     .gif-container img {
       max-width: 400px;
       border-radius: 20px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .gif-container img:hover {
+      transform: scale(1.05);
     }
 
     h2 {
@@ -145,8 +153,10 @@
 </head>
 
 <body>
+  <!-- GIFS animados -->
   <div class="gif-container">
-    <img src="{{ url_for('static', filename='waza.gif') }}" alt="GIF animado">
+    <img src="{{ url_for('static', filename='waza.gif') }}" alt="GIF waza">
+    <img src="{{ url_for('static', filename='ratawaza.gif') }}" alt="GIF ratawaza">
   </div>
 
   <h1>🌟 ¡Hola {{ user }}! 🌟</h1>
@@ -188,7 +198,7 @@
 
     document.getElementById("reset-btn").addEventListener("click", () => {
       document.body.style.animation = "none";
-      void document.body.offsetWidth;
+      void document.body.offsetWidth; // reinicia animación
       document.body.style.animation = "gradientBG 12s ease infinite";
     });
   </script>
