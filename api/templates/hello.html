@@ -1,22 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mi página de ejemplo</title>
+<title>Ejemplo Colorido</title>
+<style>
+  body {
+    /* Fondo con degradado radial del centro hacia afuera */
+    background: radial-gradient(circle, #1E90FF, #00008B);
+    font-family: Arial, sans-serif;
+    color: #FFFFFF; /* Texto blanco para contraste */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  h1 {
+    /* Título con color más claro y sombra */
+    color: #FFD700; /* Dorado */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  .container {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente para el contenedor */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  button {
+    background-color: #32CD32; /* Verde lima */
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #228B22; /* Verde bosque */
+  }
+</style>
 </head>
 <body>
 
-  <h1>¡Bienvenido a mi sitio!</h1>
-  <p>
-    Este es un ejemplo de cómo <strong>usar HTML</strong> para crear contenido.
-    Puedes <br> agregar saltos de línea para separar el texto.
-  </p>
-
-  <img src="imagen.jpg" alt="Un ejemplo de imagen" width="500">
-
-  <p>
-    ¿Quieres visitar otra página?
-    <a href="https://www.ejemplo.com" target="_blank">Haz clic aquí</a>.
-  </p>
+<div class="container">
+  <h1>¡Bienvenido a mi página colorida!</h1>
+  <p>Este es un ejemplo de diseño utilizando diferentes propiedades de color en CSS.</p>
+  <button>Haz clic aquí</button>
+</div>
 
 </body>
 </html>
