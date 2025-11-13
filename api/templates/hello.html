@@ -1,24 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<title>Ejemplo de HTML colorido con emojis</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel interactivo 🌈</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      margin-top: 50px;
+      color: #fff;
+      background: rgba(0,0,0,0.2);
+      padding: 10px 25px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h2 {
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+      margin-top: 40px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: rgba(255,255,255,0.2);
+      margin: 10px;
+      padding: 15px 25px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.4s ease;
+    }
+
+    li:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.35);
+    }
+
+    li span {
+      font-size: 1.8rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 30px;
+      margin-top: 40px;
+      text-align: center;
+      width: 80%;
+      max-width: 600px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    button {
+      background: linear-gradient(45deg, #ff6f61, #ff9a9e);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      transform: scale(1.1);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #333;
+      background: rgba(255,255,255,0.3);
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Hola {{user}}</h1>  
-  <h1 style="color: #FF5733;">¡Hola Mundo! 🌍</h1>
+  <h1>🌟 ¡Hola {{ user }}! 🌟</h1>
 
-  <p style="color: #33FF57;">Este es un párrafo con texto en verde.</p>
+  <div class="card">
+    <h2>🎨 Emociones en colores</h2>
+    <ul id="emoji-list">
+      <li style="color:#FF33A1;"><span>❤️</span> Amor</li>
+      <li style="color:#FFC300;"><span>😃</span> Alegría</li>
+      <li style="color:#00CED1;"><span>🤩</span> Emoción</li>
+      <li style="color:#ADFF2F;"><span>🧘‍♂️</span> Calma</li>
+      <li style="color:#8A2BE2;"><span>🔥</span> Pasión</li>
+    </ul>
 
-  <h2 style="color: #3357FF;">Una lista de iconos</h2>
-  <ul>
-    <li style="color: #FF33A1;"> <span role="img" aria-label="cara de corazón">❤️</span> Amor</li>
-    <li style="color: #FFC300;"> <span role="img" aria-label="cara feliz">😃</span> Alegría</li>
-    <li style="color: #00CED1;"> <span role="img" aria-label="cara con estrellas">🤩</span> Emoción</li>
-  </ul>
+    <p style="color:#fff;">Cada color representa una emoción distinta. ¡Haz clic en una emoción para cambiar el fondo!</p>
 
-  <p style="color: #8A2BE2;">Puedes usar <strong>diferentes códigos para cada emoji</strong> como en la línea anterior. Este es un ejemplo de <strong>texto en negrita</strong>.</p>
+    <button id="reset-btn">🔄 Restaurar Fondo</button>
+  </div>
 
-  <p style="color: #FF5733;">¡Puedes usar códigos de color en hexadecimal, o también puedes usar nombres de colores como 'red' o 'blue' [1]!</p>
+  <footer>
+    Hecho con 💻, ☕ y ✨ por Flask + HTML
+  </footer>
 
+  <script>
+    const colors = {
+      '❤️': '#ff9a9e',
+      '😃': '#FFE55C',
+      '🤩': '#A1C4FD',
+      '🧘‍♂️': '#B2F9FC',
+      '🔥': '#FF6F61'
+    };
+
+    document.querySelectorAll("#emoji-list li").forEach(li => {
+      li.addEventListener("click", () => {
+        const emoji = li.querySelector("span").textContent;
+        document.body.style.background = `linear-gradient(135deg, ${colors[emoji]}, #ffffff)`;
+      });
+    });
+
+    document.getElementById("reset-btn").addEventListener("click", () => {
+      document.body.style.animation = "none";
+      void document.body.offsetWidth; // reinicia animación
+      document.body.style.animation = "gradientBG 12s ease infinite";
+    });
+  </script>
 </body>
 </html>
