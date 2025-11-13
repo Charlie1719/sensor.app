@@ -76,3 +76,7 @@ def insert_sensor_value(sensor_id):
         if 'conn' in locals():
             conn.close()
 
+@app.rpute("/hello")
+def hello():
+    returin render_html("hello.html")
+
