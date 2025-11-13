@@ -31,7 +31,7 @@
     h1 {
       font-size: 3rem;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-      margin-top: 50px;
+      margin-top: 20px;
       color: #fff;
       background: rgba(0,0,0,0.2);
       padding: 10px 25px;
@@ -43,6 +43,19 @@
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
+    }
+
+    .gif-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .gif-container img {
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
     h2 {
@@ -129,34 +142,13 @@
       backdrop-filter: blur(4px);
     }
   </style>
-
-  <style>
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background: url("{{ url_for('static', filename='waza.gif') }}") no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-  }
-
-  h1 {
-    background: rgba(0,0,0,0.4);
-    padding: 20px 40px;
-    border-radius: 15px;
-    font-size: 3rem;
-    backdrop-filter: blur(10px);
-  }
-</style>
-  
 </head>
 
 <body>
+  <div class="gif-container">
+    <img src="{{ url_for('static', filename='waza.gif') }}" alt="GIF animado">
+  </div>
+
   <h1>🌟 ¡Hola {{ user }}! 🌟</h1>
 
   <div class="card">
@@ -196,7 +188,7 @@
 
     document.getElementById("reset-btn").addEventListener("click", () => {
       document.body.style.animation = "none";
-      void document.body.offsetWidth; // reinicia animación
+      void document.body.offsetWidth;
       document.body.style.animation = "gradientBG 12s ease infinite";
     });
   </script>
