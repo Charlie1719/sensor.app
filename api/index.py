@@ -78,5 +78,5 @@ def insert_sensor_value(sensor_id):
 
 @app.rpute("/hello")
 def hello():
-    returin render_template("hello.html")
+    return render_template("hello.html")
 
