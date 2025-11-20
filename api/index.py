@@ -116,7 +116,6 @@ def sensor_dashboard(sensor_id):
         conn = get_connection()
         cur = conn.cursor()
 
-        # Get the latest 10 values
         cur.execute("""
             SELECT value, created_at
             FROM sensores
@@ -126,11 +125,14 @@ def sensor_dashboard(sensor_id):
         """, (sensor_id,))
         rows = cur.fetchall()
 
-        # Convert to lists for graph
-        values = [r[0] for r in rows][::-1]        # reverse for chronological order
+        values = [r[0] for r in rows][::-1]
         timestamps = [r[1].strftime('%Y-%m-%d %H:%M:%S') for r in rows][::-1]
         
-        return render_template("dashboard.html", sensor_id=sensor_id, values=values, timestamps=timestamps, rows=rows)
+        return render_template("dashboard.html",
+                               sensor_id=sensor_id,
+                               values=values,
+                               timestamps=timestamps,
+                               rows=rows)
 
     except Exception as e:
         return f"<h3>Error: {e}</h3>"
@@ -138,6 +140,5 @@ def sensor_dashboard(sensor_id):
     finally:
         if 'conn' in locals():
             conn.close()
-
 
         
