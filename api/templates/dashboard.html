@@ -1,10 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    
-    <h1>The select element</h1>
+  <head>
+    <meta charset="UTF-8">
+    <title>Menú desplegable</title>
+    <style>
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
 
-    <p>The select element is used to create a drop-down list.</p>
-    
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        padding: 10px;
+      }
+
+      .dropdown-content button {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+
+      .dropdown.show .dropdown-content {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <h1>Menú con botones desplegables</h1>
+
+    <div class="dropdown" id="menu">
+      <button onclick="toggleMenu()">Opciones</button>
+      <div class="dropdown-content">
+        <button onclick="location.href='pagina1.html'">Ir a Página 1</button>
+        <button onclick="location.href='pagina2.html'">Ir a Página 2</button>
+        <button onclick="location.href='pagina3.html'">Ir a Página 3</button>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("menu").classList.toggle("show");
+      }
+    </script>
+
   </body>
 </html>
