@@ -110,7 +110,4 @@ def get_sensor(sensor_id):
             conn.close()
 
 
-@app.route("/sensor/dashboard")
-def get_sensor(sensor_id):
-    try:
         
