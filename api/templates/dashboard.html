@@ -1,3 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Menú profesional</title>
+    <style>
+      /* Reset simple */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e5e7eb;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        background: #020617;
+        padding: 32px 40px;
+        border-radius: 16px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+        max-width: 420px;
+        width: 100%;
+        text-align: center;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: #e5e7eb;
+      }
+
+      p {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+        color: #9ca3af;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+      }
+
+      .main-btn {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 999px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: #4f46e5;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        box-shadow: 0 12px 25px rgba(79, 70, 229, 0.35);
+      }
+
+      .main-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 35px rgba(79, 70, 229, 0.5);
+        background: #4338ca;
+      }
+
+      .main-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 8px 18px rgba(79, 70, 229, 0.4);
+      }
+
+      .arrow {
+        font-size: 0.9rem;
+        transition: transform 0.2s ease;
+      }
+
+      .dropdown.open .arrow {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-content {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        width: 100%;
+        background: #020617;
+        border-radius: 16px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+        padding: 10px;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px);
+        transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+        z-index: 10;
+      }
+
+      .dropdown.open .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown-content button {
+        width: 100%;
+        padding: 10px 12px;
+        margin-bottom: 6px;
+        border-radius: 12px;
+        border: none;
+        background: #020617;
+        color: #e5e7eb;
+        text-align: left;
+        font-size: 0.95rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.12s ease, transform 0.12s ease;
+      }
+
+      .dropdown-content button:last-child {
+        margin-bottom: 0;
+      }
+
+      .dropdown-content button span.label {
+        font-weight: 500;
+      }
+
+      .dropdown-content button span.sub {
+        font-size: 0.8rem;
+        color: #6b7280;
+      }
+
+      .dropdown-content button:hover {
+        background: #020817;
+        transform: translateY(-1px);
+      }
+
+      .pill {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        color: #9ca3af;
+      }
+
+      .footer-text {
+        margin-top: 18px;
+        font-size: 0.8rem;
+        color: #6b7280;
+      }
+    </style>
+  </head>
+  <body>
     <div class="container">
       <h1>Selecciona una sección</h1>
       <p>Elige a dónde quieres ir desde este menú central.</p>
@@ -10,7 +174,7 @@
 
         <div class="dropdown-content">
           <!-- CAMBIA LAS URLS AQUÍ -->
-          <button onclick="location.href='https://sensorapp.vercel.app/sensor/4'">
+          <button onclick="location.href='dashboard.html'">
             <span class="label">Dashboard</span>
             <span class="pill">Inicio</span>
           </button>
@@ -23,4 +187,38 @@
             <span class="pill">Análisis</span>
           </button>
 
-          <button onclick="locati
+          <button onclick="location.href='configuracion.html'">
+            <div>
+              <span class="label">Configuración</span><br />
+              <span class="sub">Preferencias y ajustes</span>
+            </div>
+            <span class="pill">Sistema</span>
+          </button>
+
+          <!-- EJEMPLO DE URL EXTERNA -->
+          <button onclick="location.href='https://google.com'">
+            <span class="label">Ir a Google</span>
+            <span class="pill">Externo</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="footer-text">Haz clic fuera del menú para cerrarlo.</p>
+    </div>
+
+    <script>
+      const dropdown = document.getElementById("menu");
+
+      function toggleMenu() {
+        dropdown.classList.toggle("open");
+      }
+
+      // Cerrar menú al hacer clic fuera
+      document.addEventListener("click", function (event) {
+        if (!dropdown.contains(event.target)) {
+          dropdown.classList.remove("open");
+        }
+      });
+    </script>
+  </body>
+</html>
