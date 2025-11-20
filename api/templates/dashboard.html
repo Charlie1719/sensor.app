@@ -1,23 +1,26 @@
-Equipo Tortas AVL
-<!DOCTYPE html>
-<html>
-  <body>
-    
-    <h1>The select element</h1>
+    <div class="container">
+      <h1>Selecciona una sección</h1>
+      <p>Elige a dónde quieres ir desde este menú central.</p>
 
-    <p>The select element is used to create a drop-down list.</p>
+      <div class="dropdown" id="menu">
+        <button class="main-btn" onclick="toggleMenu()">
+          Abrir menú
+          <span class="arrow">▼</span>
+        </button>
 
-    <form action="/sensor/">
-      <label for="sensor_id">Choose a sensor:</label>
-      <select name="sensor_id" id="sensor_id">
-        <option value="1">Sensor 1</option>
-        <option value="2">Sensor 2</option>
-        <option value="3">Sensor 3</option>
-        <option value="4">Sensor 4</option>
-      </select>
-      <br><br>
-      <input type="submit" value="Mostrar">
-    </form>
-    <p>Click the "Mostrar" button and the form-data will be sent to a page on the server called "action_page.php" 🤐</p>
-  </body>
-</html>
+        <div class="dropdown-content">
+          <!-- CAMBIA LAS URLS AQUÍ -->
+          <button onclick="location.href='https://sensorapp.vercel.app/sensor/4'">
+            <span class="label">Dashboard</span>
+            <span class="pill">Inicio</span>
+          </button>
+
+          <button onclick="location.href='reportes.html'">
+            <div>
+              <span class="label">Reportes</span><br />
+              <span class="sub">Ver datos y métricas</span>
+            </div>
+            <span class="pill">Análisis</span>
+          </button>
+
+          <button onclick="locati
