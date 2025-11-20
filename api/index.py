@@ -141,4 +141,6 @@ def sensor_dashboard(sensor_id):
         if 'conn' in locals():
             conn.close()
 
-        
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
