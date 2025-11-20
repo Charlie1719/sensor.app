@@ -110,8 +110,8 @@ def get_sensor(sensor_id):
             conn.close()
 
 
-@app.route("/sensor/dashboard")
-def get_sensor(sensor_id):
+@app.route("/sensor/dashboard/<int:sensor_id>")
+def sensor_dashboard(sensor_id):
     try:
         conn = get_connection()
         cur = conn.cursor()
