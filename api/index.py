@@ -109,3 +109,8 @@ def get_sensor(sensor_id):
         if 'conn' in locals():
             conn.close()
 
+
+@app.route("/sensor/dashboard")
+def get_sensor(sensor_id):
+    try:
+        
